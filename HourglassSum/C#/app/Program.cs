@@ -20,8 +20,8 @@ class Result
     // since they represent a non-jagged 2D array
     // but we'll store them separately for clarity
     // around what we're doing
-    private readonly int ROW_COUNT = 6;
-    private readonly int COLUMN_COUNT = 6;
+    private static readonly int ROW_COUNT = 6;
+    private static readonly int COLUMN_COUNT = 6;
 
     /*
      * Complete the 'hourglassSum' function below.
@@ -40,7 +40,22 @@ class Result
         // of rows and columns - 2, squared. So a 6 x 6 array...
         // (6 - 2) ^ 2 = 16
         // (7 - 2) ^ 2 = 25
-        
+        var maximumHourglassSum = int.MinValue; // initialize to MinValue since we're using Math.Max below and need to account for a max value that's a negative number
+
+        for(int hourglassRow = 1; hourglassRow < ROW_COUNT - 1; hourglassRow++) {
+            List<int> rowOfHourglass = arr[hourglassRow];
+            List<int> previousRow = arr[hourglassRow - 1];
+            List<int> nextRow = arr[hourglassRow + 1];
+
+            for(int hourglassCenterPosition = 1; hourglassCenterPosition < COLUMN_COUNT - 1; hourglassCenterPosition++) {
+                int currentHourglassSum = rowOfHourglass[hourglassCenterPosition] +
+                previousRow[hourglassCenterPosition] + previousRow[hourglassCenterPosition - 1] + previousRow[hourglassCenterPosition + 1] +
+                nextRow[hourglassCenterPosition] + nextRow[hourglassCenterPosition - 1] + nextRow[hourglassCenterPosition + 1];
+                maximumHourglassSum = Math.Max(currentHourglassSum, maximumHourglassSum);
+            }
+        }
+
+        return maximumHourglassSum;
     }
 
 }
