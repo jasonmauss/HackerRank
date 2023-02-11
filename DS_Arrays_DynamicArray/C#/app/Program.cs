@@ -28,8 +28,32 @@ class Result
 
     public static List<int> dynamicArray(int n, List<List<int>> queries)
     {
+        List<List<int>> dynamicNumberArray = new List<List<int>>();
         List<int> returnArray = new List<int>();
 
+        int previousAnswer = 0;
+        
+        // fill the 2D array
+
+        for(int i = 0; i < n; i++) {
+            dynamicNumberArray.Add(new List<int>());
+        }
+
+        for(int i = 0; i < queries.Count; i++) {
+            List<int> query = queries[i];
+            int queryType = query[0];
+            int x = query[1];
+            int y = query[2];
+
+            if(queryType == 1) {
+                int index = (x ^ previousAnswer) % n;
+                dynamicNumberArray[index].Add(y);
+            } else if (queryType == 2) {
+                int index = (x ^ previousAnswer) % n;
+                previousAnswer = dynamicNumberArray[index][y % dynamicNumberArray[index].Count];
+                returnArray.Add(previousAnswer);
+            }
+        }
 
         return returnArray;
     }
