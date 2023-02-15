@@ -28,11 +28,14 @@ class Result
 
     public static List<int> rotateLeft(int d, List<int> arr)
     {
-        List<int> returnList = new List<int>();
 
+        for(int i = 0; i < d; i++) {
+            int temp = arr[0];
+            arr.RemoveAt(0);
+            arr.Add(temp);
+        }
         
-
-        return returnList;
+        return arr;
     }
 
 }
@@ -41,7 +44,8 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        //TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        TextWriter textWriter = new StreamWriter(@"C:\Temp\Test.txt", true);
 
         string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
 
