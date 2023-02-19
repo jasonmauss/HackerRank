@@ -27,7 +27,13 @@ class Result
 
     public static List<int> matchingStrings(List<string> stringList, List<string> queries)
     {
-        return new List<int>();
+        List<int> stringMatches = new List<int>();
+        
+        foreach(string s in queries) {
+            stringMatches.Add(stringList.Where(x => x == s).Count());
+        }
+
+        return stringMatches;
     }
 
 }
