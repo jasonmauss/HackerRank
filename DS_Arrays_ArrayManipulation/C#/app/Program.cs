@@ -27,7 +27,23 @@ class Result
 
     public static long arrayManipulation(int n, List<List<int>> queries)
     {
-        return 0;
+        // provision an array of int64
+        long[] results = new long[n + 1];
+        
+        long sum = 0;
+        long max = 0;
+
+        foreach(List<int> query in queries) {
+            results[query[0] - 1] += query[2];
+            results[query[1]] -= query[2];
+        }
+
+        foreach(long value in results) {
+            max = Math.Max(max, sum += value);
+        }
+
+        return max;
+
     }
 
 }
@@ -36,7 +52,8 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        // TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        TextWriter textWriter = new StreamWriter(@"C:\Temp\Test.txt", true);
 
         string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
 
