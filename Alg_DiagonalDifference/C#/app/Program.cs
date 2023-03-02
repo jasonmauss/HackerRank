@@ -25,7 +25,22 @@ class Result
 
     public static int diagonalDifference(List<List<int>> arr)
     {
-        return 0;
+        int length = arr.Count;
+        int leftDiagonolPos = 0;
+        int rightDiaganolPos = length - 1;
+        int leftDiagonolTotal = 0;
+        int rightDiaganolTotal = 0;
+
+        for(int row = 0; row < length; row++) {
+            List<int> curRow = arr[row];
+            leftDiagonolTotal += curRow[leftDiagonolPos];
+            rightDiaganolTotal += curRow[rightDiaganolPos];
+
+            leftDiagonolPos++;
+            rightDiaganolPos--;
+        }
+
+        return Math.Abs(leftDiagonolTotal - rightDiaganolTotal);
     }
 
 }
