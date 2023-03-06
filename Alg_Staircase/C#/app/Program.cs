@@ -24,7 +24,22 @@ class Result
 
     public static void staircase(int n)
     {
-        
+        for(int i = 1; i <= n; i++) {
+            
+            // write out the blank space chars
+            for(int j = n - i; j > 0; j--) {
+                Console.Write(@" ");
+            }
+
+            for(int k = 1; k <= i; k++) {
+                if(k == i) {
+                    Console.WriteLine("#");    
+                } else {
+                    Console.Write("#");
+                }
+            }
+            
+        }
     }
 
 }
