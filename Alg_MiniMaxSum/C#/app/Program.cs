@@ -24,7 +24,20 @@ class Result
 
     public static void miniMaxSum(List<int> arr)
     {
+        long minValue = long.MaxValue;
+        long maxValue = long.MinValue;
+        long completeSum = 0;
 
+        foreach(int i in arr) {
+            minValue = Math.Min(minValue, Convert.ToInt64(i));
+            maxValue = Math.Max(maxValue, Convert.ToInt64(i));
+            completeSum += i;
+        }
+
+        Int64 minSum = completeSum - maxValue;
+        Int64 maxSum = completeSum - minValue;
+
+        Console.WriteLine($"{minSum} {maxSum}");
     }
 
 }
