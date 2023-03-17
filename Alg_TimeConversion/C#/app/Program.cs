@@ -25,7 +25,9 @@ class Result
 
     public static string timeConversion(string s)
     {
-        return "";
+        TimeOnly timeValue = TimeOnly.ParseExact(s, "hh:mm:sstt");
+
+        return timeValue.ToString("HH:mm:ss");
     }
 
 }
